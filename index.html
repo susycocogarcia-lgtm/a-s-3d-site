@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>a's 3d prints</title>
+    <style>
+        body {
+            background-color: #071738;
+            color: #e6f0ff;
+            margin: 0;
+            font-family: monospace;
+        }
+        h1 {
+            font-size: xx-large;
+            color: #9ecfff;
+            background-color: transparent;
+            margin: 16px 0;
+        }
+        p {
+            font-size: large;
+            color: #d6eaff;
+        }
+        .imgflex {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 50%;
+            border-radius: 7px;
+        }
+        .buy {
+            background-color: #1e6fb3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: medium;
+            cursor: pointer;
+            border-radius:9px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to a's 3d prints!</h1>
+    <p>Here you can find a collection of 3D printed models created by susycoco. Feel free to browse through the gallery and check out the different designs.</p>
+     <h1><strong>gallery:</strong></h1> 
+    <img src="thumbnails/img_0117.jpeg" alt="3D printed model 1" class="imgflex">
+    <p>flexi rex</p>
+    <button class="buy">buy</button>
+    <img>
+
+    <p><strong>for feedback or custom orders contact:</strong><a href="mailto:susycocogarcia@gmail.com">susycocogarcia@gmail.com</a></p>
+    <script>
+        (function(){
+            const targetEmail = 'susycocogarcia@gmail.com';
+            function bindHiButtons(root=document){
+                const buttons = Array.from(root.querySelectorAll('button'));
+                buttons.forEach(btn=>{
+                    if(btn.textContent && btn.textContent.trim().toLowerCase() === 'hi'){
+                        if(!btn.__hiBound){
+                            btn.addEventListener('click', ()=>{
+                                const url = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent(targetEmail);
+                                window.open(url, '_blank');
+                            });
+                            btn.__hiBound = true;
+                        }
+                    }
+                });
+            }
+            document.addEventListener('DOMContentLoaded', ()=>bindHiButtons());
+            const observer = new MutationObserver(()=>bindHiButtons());
+            observer.observe(document.body, { childList: true, subtree: true });
+        })();
+    </script>
+</body>
+</html>
